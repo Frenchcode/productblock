@@ -30,7 +30,7 @@ class ProductBlock extends Module
     {
         $this->name = 'productblock';
         $this->tab = 'front_office_features';
-        $this->version = '2.0.0';
+        $this->version = '3.0.0';
         $this->author = "Ephraim Bokuma";
         $this->author_uri = "https://www.ephraimbokuma.com";
         $this->need_instance = 0;
@@ -40,11 +40,11 @@ class ProductBlock extends Module
         parent::__construct();
 
         $this->displayName = $this->trans('Product Block', [], 'Modules.Productblock.Admin');
-        $this->description = $this->trans('Display Two product', [], 'Modules.Productblock.Admin');
+        $this->description = $this->trans('Display two product from your store', [], 'Modules.Productblock.Admin');
         $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Productblock.Admin');
 
         if (!Configuration::get('PRODUCT_BLOCK')) {
-            $this->warning = $this->trans('Product Block is disabled.', [], 'Modules.Productblock.Admin');
+            $this->warning = $this->trans('No name provided', [], 'Modules.Productblock.Admin');
         }
     }
 
