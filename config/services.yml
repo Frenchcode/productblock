@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    public: true
+
+  # Demo configuration text form
+  prestashop.module.productblock.form.type.productblock_configuration_text:
+    class: 'PrestaShop\Module\ProductBlock\Form\ProductblockConfigurationFormType'
+    parent: 'form.type.translatable.aware'
+    public: true
+    tags:
+      - { name: form.type }
