@@ -44,7 +44,7 @@ class ProductblockConfigurationFormType extends TranslatorAwareType
             $choices[$product['name']] = $product['id_product'];
         }
         $builder
-            ->add('product', ChoiceType::class, [
+            ->add('product_one', ChoiceType::class, [
                 'choices' => $choices,
                 'label' => $this->trans('First Product', 'Modules.Productblock.Admin'),
                 'help' => $this->trans('Choose a product', 'Modules.Productblock.Admin'),
