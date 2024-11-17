@@ -1,0 +1,7 @@
+productblock_configuration_form_simple:
+  path: /productblock/configuration
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\ProductBlock\Controller\ProductblockConfigurationController::index'
+    _legacy_controller: AdminProductBlock
+    _legacy_link: AdminProductBlock
