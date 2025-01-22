@@ -19,7 +19,6 @@
  */
 declare(strict_types=1);
 
-
 if (!defined('_PS_VERSION_')) {
     exit();
 }
@@ -52,6 +51,7 @@ class ProductBlock extends Module
     {
         return (
             parent::install() &&
+            $this->registerHook('displayHome') &&
             Configuration::updateValue('PRODUCT_BLOCK', 'productblock')
         );
     }
@@ -62,6 +62,84 @@ class ProductBlock extends Module
             parent::uninstall() &&
             Configuration::deleteByName('PRODUCT_BLOCK')
         );
+    }
+
+    /**
+     * @throws Exception
+     */
+    public  function getContent(): void
+    {
+        $route = $this->get('router')->generate('productblock_configuration_form_simple');
+        Tools::redirectAdmin($route);
+    }
+
+    private function getShopProducts(): array
+    {
+        return Product::getProducts(
+            $this->context::getContext()->language->id,
+            0,
+            0,
+            'name',
+            'asc'
+        );
+    }
+
+    private function getShopCoverImage(string $productId):array
+    {
+        $images = Image::getCover($productId);
+        return $images;
+    }
+
+    private function getShopProduct(array $products, string $productId): mixed
+    {
+        $productFound = null;
+
+        foreach ($products as $product) {
+            if ($product['id_product'] == $productId) {
+                $productFound = $product;
+                break;
+            } else {
+                $productFound = "Didn't find anything";
+            }
+        }
+        return $productFound;
+    }
+
+    /**
+     * @throws PrestaShopException
+     */
+    public function hookDisplayHome(): bool | string
+    {
+        $products = $this->getShopProducts();
+        $firstProductId = Configuration::get('PRODUCT_FORM_PRODUCT_ONE');
+        $secondProductId = Configuration::get('PRODUCT_FORM_PRODUCT_TWO');
+
+        $firstProductCoverImageId = $this->getShopCoverImage($firstProductId);
+        $secondProductCoverImageId = $this->getShopCoverImage($secondProductId);
+
+        $firstProduct = $this->getShopProduct($products, $firstProductId);
+        $secondProduct = $this->getShopProduct($products, $secondProductId);
+
+        $this->context->smarty->assign([
+            'product' => $firstProduct,
+            'product_name' => $firstProduct['name'],
+            'product_link' => $this->context->link->getProductLink($firstProduct['id_product']),
+            'product_cover_image' => $this->context->link->getImageLink(
+                $firstProduct['link_rewrite'],
+                $firstProductCoverImageId['id_image'],
+                'large_default'
+            ),
+            'product_two' => $secondProduct,
+            'product_name_two' => $secondProduct['name'],
+            'product_link_two' => $this->context->link->getProductLink($secondProduct['id_product']),
+            'product_cover_image_two' => $this->context->link->getImageLink(
+                $secondProduct['link_rewrite'],
+                $secondProductCoverImageId['id_image'],
+                'large_default'
+            ),
+        ]);
+
+        return $this->display(__FILE__, 'productpage.tpl');
     }
 }
 

@@ -48,6 +48,12 @@ class ProductblockConfigurationFormType extends TranslatorAwareType
                 'choices' => $choices,
                 'label' => $this->trans('First Product', 'Modules.Productblock.Admin'),
                 'help' => $this->trans('Choose a product', 'Modules.Productblock.Admin'),
+            ])
+            ->add('product_two', ChoiceType::class, [
+                'choices' => $choices,
+                'label' => $this->trans('Second Product', 'Modules.Productblock.Admin'),
+                'help' => $this->trans('Choose a product', 'Modules.Productblock.Admin'),
             ]);
+
     }
 }

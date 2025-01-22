@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PrestaShop\Module\MyHealthBanner\Form;
+namespace PrestaShop\Module\ProductBlock\Form;
 
 
 use PrestaShop\PrestaShop\Core\Configuration\DataConfigurationInterface;

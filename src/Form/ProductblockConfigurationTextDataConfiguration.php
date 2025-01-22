@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace PrestaShop\Module\ProductBlock\Form;
 
-use \PrestaShop\PrestaShop\Core\Configuration\DataConfigurationInterface;
+use PrestaShop\PrestaShop\Core\Configuration\DataConfigurationInterface;
 use PrestaShop\PrestaShop\Core\ConfigurationInterface;
 
-final class ProductblokcConfigurationTextDataConfiguration implements DataConfigurationInterface
+
+final class ProductblockConfigurationTextDataConfiguration implements DataConfigurationInterface
 {
     public const PRODUCT_FORM_PRODUCT_ONE = 'PRODUCT_FORM_PRODUCT_ONE';
+    public const PRODUCT_FORM_PRODUCT_TWO = 'PRODUCT_FORM_PRODUCT_TWO';
 
     /**
      * @var ConfigurationInterface
@@ -23,6 +25,7 @@ final class ProductblokcConfigurationTextDataConfiguration implements DataConfig
     {
         $return = [];
         $return['product_one'] = $this->configuration->get(static::PRODUCT_FORM_PRODUCT_ONE);
+        $return['product_two'] = $this->configuration->get(static::PRODUCT_FORM_PRODUCT_TWO);
 
         return $return;
     }
@@ -36,11 +39,22 @@ final class ProductblokcConfigurationTextDataConfiguration implements DataConfig
         } else {
             $errors[] = 'Missing configuration parameter';
         }
+
+        if ($this->validateSecondConfiguration($configuration)) {
+            $this->configuration->set(static::PRODUCT_FORM_PRODUCT_TWO, $configuration['product_two']);
+        } else {
+            $errors[] = 'Missing configuration parameter';
+        }
         return $errors;
     }
 
     public function validateConfiguration(array $configuration): bool
     {
         return isset($configuration['product_one']);
+    }
+
+    public function validateSecondConfiguration(array $configuration): bool
+    {
+        return isset($configuration['product_two']);
     }
 }

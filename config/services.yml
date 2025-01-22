@@ -11,7 +11,7 @@ services:
       - { name: form.type }
 
   prestashop.module.productblock.form.productblock_configuration_text_data_configuration:
-    class: 'PrestaShop\Module\ProductBlock\Form\productblockConfigurationTextDataConfiguration'
+    class: 'PrestaShop\Module\ProductBlock\Form\ProductblockConfigurationTextDataConfiguration'
     arguments: [ '@prestashop.adapter.legacy.configuration' ]
 
   prestashop.module.productblock.form.productblock_configuration_text_form_data_provider:
@@ -26,4 +26,4 @@ services:
       - '@prestashop.core.hook.dispatcher'
       - '@prestashop.module.productblock.form.productblock_configuration_text_form_data_provider'
       - 'PrestaShop\Module\ProductBlock\Form\ProductblockConfigurationFormType'
-      - 'ProductBlockConfiguration'
+      - 'ProductblockConfiguration'

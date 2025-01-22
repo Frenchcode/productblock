@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
+
 namespace PrestaShop\Module\ProductBlock\Controller;
+
 
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 use Symfony\Component\HttpFoundation\Request;
