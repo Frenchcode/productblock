@@ -29,7 +29,7 @@ class ProductBlock extends Module
     {
         $this->name = 'productblock';
         $this->tab = 'front_office_features';
-        $this->version = '3.0.0';
+        $this->version = '3.0.1';
         $this->author = "Ephraim Bokuma";
         $this->author_uri = "https://www.ephraimbokuma.com";
         $this->need_instance = 0;
@@ -52,6 +52,7 @@ class ProductBlock extends Module
         return (
             parent::install() &&
             $this->registerHook('displayHome') &&
+            $this->registerHook('actionFrontControllerSetMedia') &&
             Configuration::updateValue('PRODUCT_BLOCK', 'productblock')
         );
     }
@@ -140,6 +141,18 @@ class ProductBlock extends Module
         ]);
 
         return $this->display(__FILE__, 'productpage.tpl');
+    }
+
+    function hookActionFrontControllerSetMedia(): void
+    {
+        $this->context->controller->registerStylesheet(
+            'productblock-style',
+            'modules/' .$this->name . '/views/css/productblock.css',
+            [
+                'media' => 'all',
+                'priority' => 100,
+            ]
+        );
     }
 }
 
