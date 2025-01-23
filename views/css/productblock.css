@@ -6,6 +6,7 @@
     --naslim-purple: hsl(298, 13%, 45%);
     --naslim-brown: hsl(340deg 8.67% 33.92%);
     --naslim-light-brown: hsl(340deg 8.67% 33.92% / 79%);
+    --naslim-red: hsl(6.61deg 72.57% 34.31%);
     --naslim-white: white;
     --wave-button: #eff2f5;
     --wave-button-shadow: #a5a7a9;
@@ -27,12 +28,31 @@
     margin-left: 0.5em;
     margin-right: 0.5em;
     .img-container {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         .naslim-product-img {
             height: auto;
             width: 100%;
             max-width: 35em;
             border-radius: 0.8em;
+        }
+        .product-block-text {
+            text-align: center;
+            color: var(--naslim-red);
+            font-size: 1.5em;
+            font-weight: 500;
+            /* From https://css.glass */
+            background: rgba(255, 255, 255, 0.41);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.7px);
+            -webkit-backdrop-filter: blur(8.7px);
+            border: 1px solid rgba(255, 255, 255, 0.94);
+            padding: 1em;
+            position: relative;
+            bottom: 7em;
         }
     }
 }
