@@ -27,36 +27,37 @@
     gap: 3em;
     margin-left: 0.5em;
     margin-right: 0.5em;
-    .img-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        .naslim-product-img img {
-            position: relative;
-            display: block;
-            width: 100%;
-            max-width: 30em;
-            height: auto;
-            margin: auto;
-            border-radius: 0.8em;
-        }
-        .product-block-text {
-            text-align: center;
-            color: var(--naslim-red);
-            font-size: 1.5em;
-            font-weight: 500;
-            /* From https://css.glass */
-            background: rgba(255, 255, 255, 0.41);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8.7px);
-            -webkit-backdrop-filter: blur(8.7px);
-            border: 1px solid rgba(255, 255, 255, 0.94);
-            padding: 1em;
-            position: relative;
-            bottom: 7em;
-        }
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .naslim-product-img img {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 30em;
+        height: auto;
+        margin: auto;
+        border-radius: 0.8em;
+    }
+    .product-block-text {
+        text-align: center;
+        color: var(--naslim-red);
+        font-size: 1.5em;
+        font-weight: 500;
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.41);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(8.7px);
+        -webkit-backdrop-filter: blur(8.7px);
+        border: 1px solid rgba(255, 255, 255, 0.94);
+        padding: 1em;
+        position: relative;
+        bottom: 7em;
     }
 }
 
