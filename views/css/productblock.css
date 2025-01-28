@@ -33,8 +33,9 @@
         align-items: center;
         flex-direction: column;
         .naslim-product-img {
-            height: auto;
             width: 100%;
+            max-width: 560px;
+            height: auto;
             border-radius: 0.8em;
         }
         .product-block-text {
