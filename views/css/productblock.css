@@ -35,8 +35,8 @@
         .naslim-product-img img {
             position: relative;
             display: block;
-            max-width: 100%;
-            width: 23em;
+            width: 100%;
+            max-width: 30em;
             height: auto;
             margin: auto;
             border-radius: 0.8em;
