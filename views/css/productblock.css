@@ -32,7 +32,9 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        .naslim-product-img {
+        .naslim-product-img img {
+            position: relative;
+            display: block;
             width: 100%;
             max-width: 560px;
             height: auto;
